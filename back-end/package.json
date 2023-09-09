@@ -11,7 +11,6 @@
     "prebuild": "npx prisma generate",
     "build": "tsc",
     "start": "node ./dist/server.js",
-    "start-docker": "node src/server.js",
     "clean": "tsc --build --clean",
     "rebuild": "npm run clean && npm run build"
   },
