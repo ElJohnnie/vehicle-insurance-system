@@ -3,14 +3,13 @@
 </template>
 
 <script>
-import { API_KEY } from "@/configs/API_KEY";
 import { Loader, LoaderOptions } from "google-maps";
 
-const loader = new Loader(API_KEY);
+const loader = new Loader(process.env.VUE_APP_GOOGLE_MAPS_API_KEY);
 export default {
   mounted() {
     loader.load().then(function (google) {
-      var myLatlng = new google.maps.LatLng(-7.115, -34.86306);
+      var myLatlng = new google.maps.LatLng(-29.842, -51.1462);
       var mapOptions = {
         zoom: 13,
         center: myLatlng,
