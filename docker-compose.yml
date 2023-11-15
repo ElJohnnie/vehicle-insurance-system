@@ -17,60 +17,60 @@ services:
     networks:
       - vehicle-insurance
 
-  back-end:
-    build: './back-end/'
-    container_name: "vehicle-insurance_backend"
-    image: vehicle-insurance_backend
-    user: root
-    working_dir: /app/
-    environment:
-      - NODE_ENV=development
-    expose:
-      - 3306
-    ports:
-      - 3000:3000
-    env_file:
-      - back-end/docker.env
-    depends_on:
-      - mysql
-    networks:
-      - vehicle-insurance
+  # back-end:
+  #   build: './back-end/'
+  #   container_name: "vehicle-insurance_backend"
+  #   image: vehicle-insurance_backend
+  #   user: root
+  #   working_dir: /app/
+  #   environment:
+  #     - NODE_ENV=development
+  #   expose:
+  #     - 3306
+  #   ports:
+  #     - 3000:3000
+  #   env_file:
+  #     - back-end/docker.env
+  #   # depends_on:
+  #   #   - mysql
+  #   networks:
+  #     - vehicle-insurance
 
-  mysql:
-    container_name: "vehicle-insurance_database"
-    image: vehicle-insurance_database
-    build: './mysql/'
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: vehicle-insurance
-    volumes:
-      - ./:/app/
-    expose:
-      - 3306
-    ports:
-      - 3306:3306
-    command: --explicit-defaults-for-timestamp=ON
-    networks:
-      - vehicle-insurance
+  # mysql:
+  #   container_name: "vehicle-insurance_database"
+  #   image: vehicle-insurance_database
+  #   build: './mysql/'
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_DATABASE: vehicle-insurance
+  #   volumes:
+  #     - ./:/app/
+  #   expose:
+  #     - 3306
+  #   ports:
+  #     - 3306:3306
+  #   command: --explicit-defaults-for-timestamp=ON
+  #   networks:
+  #     - vehicle-insurance
 
-  nginx:
-    container_name: "vehicle-insurance_nginx"
-    build: './nginx/'
-    image: vehicle-insurance_nginx
-    user: root
-    working_dir: /app/
-    expose:
-      - 80
-    ports:
-      - 80:80
-    volumes:
-      - ./nginx/:/app/nginx/
-    env_file:
-      - nginx/docker.env
-    networks:
-      - vehicle-insurance
-    depends_on:
-      - back-end
+  # nginx:
+  #   container_name: "vehicle-insurance_nginx"
+  #   build: './nginx/'
+  #   image: vehicle-insurance_nginx
+  #   user: root
+  #   working_dir: /app/
+  #   expose:
+  #     - 80
+  #   ports:
+  #     - 80:80
+  #   volumes:
+  #     - ./nginx/:/app/nginx/
+  #   env_file:
+  #     - nginx/docker.env
+  #   networks:
+  #     - vehicle-insurance
+  #   depends_on:
+  #     - back-end
 
 networks:
   vehicle-insurance:

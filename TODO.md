@@ -2,7 +2,7 @@
 
 ## back-end
 
-- [] Consertar build docker
+- [] Consertar build typescript
 
 ## nginx
 

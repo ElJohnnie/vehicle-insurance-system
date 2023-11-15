@@ -8,5 +8,5 @@ RUN pm2 install pm2-logrotate
 WORKDIR /app
 COPY ./ ./
 RUN npm i
-RUN npm run build
+RUN rm -rf /app/dist && npm run build
 RUN npm run start
