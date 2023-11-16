@@ -4,4 +4,7 @@ module.exports = {
     port: process.env.VUE_APP_PORT || 80,
     host: process.env.VUE_APP_HOST,
   },
+  configureWebpack: {
+    entry: "./src/main.js",
+  },
 };

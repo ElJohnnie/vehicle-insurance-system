@@ -14,7 +14,7 @@
     "reset-wd": "rm -rf node_modules && npm install",
     "install:clean": "rm -rf node_modules && rm -rm package.json.lock && npm install && npm run dev"
   },
-  "main": "background.js",
+  "main": "./src/main.js",
   "browser": {
     "crypto": false
   },
