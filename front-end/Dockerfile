@@ -1,14 +1,11 @@
 # Estágio de construção
 FROM node:16.20.0 as build-stage
 
-# Expor a porta 80 (se necessário)
-EXPOSE 80
-
 # Configurar o diretório de trabalho
 WORKDIR /usr/src/app
 
 # Copiar os arquivos para o diretório de trabalho
-COPY ./ ./
+COPY . /usr/src/app
 
 # Instalar as dependências
 RUN npm install
@@ -19,14 +16,8 @@ RUN chmod a+x ~/.npm
 # Executar o comando de construção
 RUN npm run build
 
-# Mostrar o conteúdo do diretório após a construção (apenas para depuração)
-CMD ["ls"]
-
 # Estágio de produção
 FROM nginx as production-stage
-
-# Configurar o diretório de trabalho
-WORKDIR /usr/src/app
 
 # Copiar o diretório "dist" do estágio de construção para o estágio de produção
 COPY --from=build-stage /usr/src/app/dist /usr/share/nginx/html
